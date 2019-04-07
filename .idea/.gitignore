@@ -1,0 +1,11 @@
+*.xml
+!checkstyle-idea.xml
+!codeStyles/codeStyleConfig.xml
+!codeStyles/Project.xml
+!inspectionProfiles/Project_Default.xml
+!google-java-format.xml
+!modules.xml
+
+libraries
+scopes
+sonarlint

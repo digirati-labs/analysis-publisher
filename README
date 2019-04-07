@@ -1,0 +1,4 @@
+analysis-publisher
+------------------
+
+A tool to publish static analysis and code quality information to GitHub (and other services).

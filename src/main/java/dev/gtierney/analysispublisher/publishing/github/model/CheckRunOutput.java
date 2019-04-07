@@ -1,0 +1,35 @@
+package dev.gtierney.analysispublisher.publishing.github.model;
+
+import dev.gtierney.analysispublisher.publishing.github.serializer.AnnotationSerializer;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import edu.hm.hafner.analysis.Issue;
+import java.util.List;
+
+public class CheckRunOutput {
+  final String title;
+  final String summary;
+  final List<Issue> issues;
+
+  public CheckRunOutput(String title, String summary, List<Issue> issues) {
+    this.title = title;
+    this.summary = summary;
+    this.issues = issues;
+  }
+
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
+  }
+
+  @JsonProperty("summary")
+  public String getSummary() {
+    return summary;
+  }
+
+  @JsonProperty("annotations")
+  @JsonSerialize(contentUsing = AnnotationSerializer.class)
+  public List<Issue> getIssues() {
+    return issues;
+  }
+}

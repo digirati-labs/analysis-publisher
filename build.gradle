@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'jacoco'
+    id "com.github.spotbugs" version "1.7.1"
+}
+
+group 'dev.gtierney'
+version '1.0-SNAPSHOT'
+
+mainClassName = "dev.gtierney.analysispublisher.AnalysisPublisherApplication"
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+    maven { url 'http://repo.jenkins-ci.org/releases/' }
+}
+
+dependencies {
+    compile group: 'info.picocli', name: 'picocli', version: '4.0.0-alpha-1'
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
+    compile group: 'edu.hm.hafner', name: 'analysis-model', version: '4.0.0'
+
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.8'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.8'
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.8'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+
+    compile group: 'org.jboss.resteasy', name: 'resteasy-client', version: '3.6.+'
+    compile group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: '3.6.+'
+    compile group: 'org.jboss.resteasy', name: 'resteasy-jackson2-provider', version: '3.6.+'
+
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.2'
+    runtime group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
+
+    compile group: 'com.google.guava', name: 'guava', version: '27.1-jre'
+
+    testCompile group: 'com.github.tomakehurst', name: 'wiremock', version: '2.19.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.4.1'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.4.1'
+}
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        showStandardStreams = true
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+spotbugs {
+    ignoreFailures = true
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+    }
+}
