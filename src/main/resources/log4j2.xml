@@ -6,13 +6,7 @@
     </Console>
   </Appenders>
   <Loggers>
-    <Logger name="org.jboss.resteasy" level="DEBUG"/>
-    <Logger name="org.jboss.resteasy.specimpl" level="DEBUG"/>
-    <Logger name="org.jboss.resteasy.client" level="DEBUG"/>
-    <Logger name="org.jboss.resteasy.client.*" level="DEBUG"/>
-    <Logger name="org.jboss.resteasy.client.core" level="DEBUG"/>
-
-    <Root level="debug">
+    <Root level="info">
       <AppenderRef ref="Console"/>
     </Root>
   </Loggers>
