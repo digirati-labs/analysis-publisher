@@ -10,6 +10,12 @@ import java.util.function.Supplier;
 
 @FunctionalInterface
 public interface IssueParserFactoryBuilder {
+
+  /**
+   * Contributes all known default issue parsers to the given {@link IssueParserFactoryBuilder}.
+   *
+   * @param builder the builder to register parsers with.
+   */
   static void contributeDefaultParsers(IssueParserFactoryBuilder builder) {
     builder.add("javac", JavacParser::new);
     builder.add("javadoc", JavaDocParser::new);

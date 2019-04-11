@@ -70,6 +70,13 @@ public class CheckRun {
     return new CheckRun(name, headSha, output, conclusion, CheckRunStatus.COMPLETED, Instant.now());
   }
 
+  /**
+   * Create a clone of this {@link CheckRun} with the list of issues given.
+   *
+   * @param issues A collection of issues to register as annotations. Must contain no more than 50
+   *     elements.
+   * @return A new {@code CheckRun} with a collection of {@link Issue}s in its output.
+   */
   public CheckRun withIssues(List<Issue> issues) {
     if (issues.size() > MAX_ANNOTATIONS) {
       throw new IllegalArgumentException("A check-run can only accept 50 issues at a time");
@@ -78,7 +85,7 @@ public class CheckRun {
     return new CheckRun(
         name,
         headSha,
-        new CheckRunOutput(output.title, output.summary, issues),
+        new CheckRunOutput(output.getTitle(), output.getSummary(), issues),
         null,
         status,
         null);

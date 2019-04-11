@@ -28,11 +28,19 @@ public class ReportCollector {
     this(FileSystems.getDefault(), parserFactory);
   }
 
-  public ReportCollector(FileSystem fileSystem, IssueParserFactory parserFactory) {
+  private ReportCollector(FileSystem fileSystem, IssueParserFactory parserFactory) {
     this.fileSystem = fileSystem;
     this.issueParserFactory = parserFactory;
   }
 
+  /**
+   * Register a report location to be scanned with the given {@code reportType} parser.
+   *
+   * @param reportType The name of an analysis report parser.
+   * @param glob A glob matching paths to reports.
+   * @throws ReportCollectorException if there was no parser available for reports of {@code
+   *     reportType}.
+   */
   public void addReportLocation(String reportType, String glob) throws ReportCollectorException {
     var matcher = fileSystem.getPathMatcher("glob:" + glob);
     var parser =
@@ -41,6 +49,16 @@ public class ReportCollector {
     scanWorkItems.add(new ScanWorkItem(reportType, parser, matcher));
   }
 
+  /**
+   * Visit all files in the {@code workingDirectory}, parsing any reports that match the locations
+   * given to the collector by {@link #addReportLocation(String, String)}. Any reports that are
+   * parsed will be aggregated into a single report containing a list of every issue across the
+   * workspace.
+   *
+   * @param workingDirectory The directory to scan.
+   * @return an aggregate report and listing of all files that contributed to the report.
+   * @throws ReportCollectorException if an internal error occurred while collecting reports.
+   */
   public ReportCollection collect(String workingDirectory) throws ReportCollectorException {
     var builder = new ReportCollection.Builder();
     var workingDirectoryPath = fileSystem.getPath(workingDirectory);

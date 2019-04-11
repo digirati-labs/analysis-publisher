@@ -14,6 +14,10 @@ public abstract class EndToEndHttpPublisherTest {
 
   protected abstract List<String> getArguments(WireMockServer server);
 
+  /**
+   * Bootstraps each test by setting up a web server that can be stubbed and running the application
+   * with the arguments that were returned by the test implementation.
+   */
   @BeforeEach
   public void setup() {
     server = new WireMockServer();

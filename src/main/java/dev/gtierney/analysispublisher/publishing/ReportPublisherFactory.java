@@ -11,6 +11,16 @@ public final class ReportPublisherFactory {
     this.types = types;
   }
 
+  /**
+   * Create and configure a {@link ReportPublisher} from the publishing environment.
+   *
+   * @param name The name of the publisher to configure.
+   * @param environment The execution environment, containing the properties and environment
+   *     variables the application was run with.
+   * @return A configured {@link ReportPublisher}.
+   * @throws ReportPublisherException if the publisher couldn't be configured from the {@code
+   *     environment}, or no sch publisher with the given {@code name} exists.
+   */
   public ReportPublisher create(String name, AnalysisPublisherEnvironment environment)
       throws ReportPublisherException {
 

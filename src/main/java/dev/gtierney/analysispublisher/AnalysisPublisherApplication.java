@@ -35,7 +35,11 @@ public class AnalysisPublisherApplication {
     this.publisherFactory = publisherFactory;
   }
 
-  public static void main(String[] argv) {
+  /**
+   * Start the application to collect and publish analysis results with the given {@link
+   * AnalysisPublisherOptions} represented by the command line {@code args}.
+   */
+  public static void main(String[] args) {
     var parserFactory = IssueParserFactory.createDefaultFactory();
     var publisherFactory = new ReportPublisherFactory(List.of(new GitHubCheckPublisherType()));
 
@@ -43,7 +47,7 @@ public class AnalysisPublisherApplication {
     var options = new AnalysisPublisherOptions();
 
     try {
-      CommandLine.populateCommand(options, argv);
+      CommandLine.populateCommand(options, args);
     } catch (ParameterException e) {
       System.out.println(e.getMessage());
       CommandLine.usage(options, System.out);
@@ -53,7 +57,7 @@ public class AnalysisPublisherApplication {
     app.run(options);
   }
 
-  public void run(AnalysisPublisherOptions options) {
+  private void run(AnalysisPublisherOptions options) {
     ReportCollection reportCollection;
     try {
       reportCollection = collectReports(options);
@@ -70,7 +74,7 @@ public class AnalysisPublisherApplication {
     publishReports(options, reportCollection.getAggregate());
   }
 
-  ReportCollection collectReports(AnalysisPublisherOptions options)
+  private ReportCollection collectReports(AnalysisPublisherOptions options)
       throws ReportCollectorException {
     var collector = new ReportCollector(parserFactory);
 

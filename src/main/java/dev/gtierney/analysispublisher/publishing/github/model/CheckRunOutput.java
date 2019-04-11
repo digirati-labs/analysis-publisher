@@ -7,11 +7,11 @@ import edu.hm.hafner.analysis.Issue;
 import java.util.List;
 
 public class CheckRunOutput {
-  final String title;
-  final String summary;
-  final List<Issue> issues;
+  private final String title;
+  private final String summary;
+  private final List<Issue> issues;
 
-  public CheckRunOutput(String title, String summary, List<Issue> issues) {
+  CheckRunOutput(String title, String summary, List<Issue> issues) {
     this.title = title;
     this.summary = summary;
     this.issues = issues;
