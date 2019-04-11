@@ -16,7 +16,7 @@ public abstract class EndToEndHttpPublisherTest {
 
   @BeforeEach
   public void setup() {
-    server = new WireMockServer(8889);
+    server = new WireMockServer();
     server.start();
 
     configure(server);
