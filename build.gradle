@@ -65,7 +65,9 @@ checkstyle {
 
 jacocoTestReport {
     reports {
-        xml.enabled false
+        xml.enabled true
         csv.enabled false
     }
 }
+
+check.dependsOn(jacocoTestReport)
