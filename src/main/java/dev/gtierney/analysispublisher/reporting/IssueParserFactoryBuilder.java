@@ -5,6 +5,7 @@ import edu.hm.hafner.analysis.parser.FindBugsParser;
 import edu.hm.hafner.analysis.parser.FindBugsParser.PriorityProperty;
 import edu.hm.hafner.analysis.parser.JavaDocParser;
 import edu.hm.hafner.analysis.parser.JavacParser;
+import edu.hm.hafner.analysis.parser.checkstyle.CheckStyleParser;
 import java.util.function.Supplier;
 
 @FunctionalInterface
@@ -16,6 +17,8 @@ public interface IssueParserFactoryBuilder {
     Supplier<IssueParser> spotbugs = () -> new FindBugsParser(PriorityProperty.CONFIDENCE);
     builder.add("spotbugs", spotbugs);
     builder.add("findbugs", spotbugs);
+
+    builder.add("checkstyle", CheckStyleParser::new);
   }
 
   void add(String name, Supplier<IssueParser> parser);

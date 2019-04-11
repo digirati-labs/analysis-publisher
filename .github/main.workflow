@@ -11,8 +11,13 @@ action "analysis-publisher/ci/analyze" {
 }
 
 action "analysis-publisher/ci/publish-analysis" {
-  uses = "./"
   needs = ["analysis-publisher/ci/analyze"]
   secrets = ["GITHUB_TOKEN"]
-  args = ["--report-type", "spotbugs", "--path", "**/spotbugs/*.xml", "--publisher=github_check"]
+
+  uses = "./"
+  args = [
+    "--report-type=checkstyle", "--path=**/checkstyle/*.xml",
+    "--report-type=spotbugs", "--path=**/spotbugs/*.xml",
+    "--publisher=github_check"
+  ]
 }
