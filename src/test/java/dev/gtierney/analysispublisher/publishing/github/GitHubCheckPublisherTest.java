@@ -13,9 +13,9 @@ import static com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathMatching;
 
-import dev.gtierney.analysispublisher.publishing.EndToEndHttpPublisherTest;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.matching.UrlPattern;
+import dev.gtierney.analysispublisher.publishing.EndToEndHttpPublisherTest;
 import java.util.List;
 import javax.ws.rs.core.HttpHeaders;
 import org.junit.jupiter.api.Tag;

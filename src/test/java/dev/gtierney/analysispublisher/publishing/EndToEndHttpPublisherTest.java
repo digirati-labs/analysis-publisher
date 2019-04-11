@@ -1,7 +1,7 @@
 package dev.gtierney.analysispublisher.publishing;
 
-import dev.gtierney.analysispublisher.AnalysisPublisherApplication;
 import com.github.tomakehurst.wiremock.WireMockServer;
+import dev.gtierney.analysispublisher.AnalysisPublisherApplication;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;

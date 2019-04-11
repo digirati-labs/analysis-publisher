@@ -1,10 +1,10 @@
 package dev.gtierney.analysispublisher.publishing.github.model;
 
-import dev.gtierney.analysispublisher.publishing.github.serializer.TimestampSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import dev.gtierney.analysispublisher.publishing.github.serializer.TimestampSerializer;
 import edu.hm.hafner.analysis.Issue;
 import java.time.Instant;
 import java.util.Collections;

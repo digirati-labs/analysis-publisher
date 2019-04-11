@@ -1,8 +1,8 @@
 package dev.gtierney.analysispublisher.publishing.github.model;
 
-import dev.gtierney.analysispublisher.publishing.github.serializer.AnnotationSerializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import dev.gtierney.analysispublisher.publishing.github.serializer.AnnotationSerializer;
 import edu.hm.hafner.analysis.Issue;
 import java.util.List;
 
