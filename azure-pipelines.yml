@@ -4,7 +4,6 @@ pool:
 steps:
   - task: Gradle@2
     inputs:
-      workingDirectory: ''
       gradleWrapperFile: 'gradlew'
       gradleOptions: '-Xmx3072m'
       javaHomeOption: 'JDKVersion'
@@ -13,3 +12,13 @@ steps:
       publishJUnitResults: false
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'build'
+  - task: PublishCodeCoverageResults@1
+    inputs:
+      codeCoverageTool: 'JaCoCo'
+      summaryFileLocation: "build/reports/jacoco/test/jacocoTestReport.xml"
+      reportDirectory: "build/reports/jacoco/test/html"
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: '**/TEST-*.xml'
+      searchFolder: '$(System.DefaultWorkingDirectory)'
