@@ -91,7 +91,6 @@ public class GitHubCheckPublisher implements ReportPublisher {
 
     @Override
     public void filter(ClientRequestContext requestContext) {
-      logger.error("Requesting {}", requestContext.getUri());
       requestContext.getHeaders().putSingle(HttpHeaders.AUTHORIZATION, authHeader);
     }
   }
