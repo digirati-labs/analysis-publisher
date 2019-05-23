@@ -19,6 +19,8 @@ All supported publishers are listed below:
 
 The `analysis-model` library from Jenkins is used to parse issue reports, and as such `analysis-publisher` supports all formats from the [upstream Jenkins plugin](https://github.com/jenkinsci/warnings-ng-plugin/blob/master/SUPPORTED-FORMATS.md).
 
+**Note**: only a few of these publishers are currently registered, see [IssueParserFactoryBuilder.java](src/main/java/dev/gtierney/analysispublisher/reporting/IssueParserFactoryBuilder.java) for a list of supported report parsers.
+
 ## Usage
 
 A Docker image is available containing a compiled binary of the analysis publisher application, which can be used to upload analysis reports in a GitHub action.
