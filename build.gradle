@@ -20,7 +20,7 @@ repositories {
 dependencies {
     compile group: 'info.picocli', name: 'picocli', version: '4.0.0-alpha-1'
     compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
-    compile group: 'edu.hm.hafner', name: 'analysis-model', version: '5.0.2'
+    compile group: 'edu.hm.hafner', name: 'analysis-model', version: '5.1.1'
 
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.8'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.8'
