@@ -32,7 +32,7 @@ dependencies {
     compile group: 'org.jboss.resteasy', name: 'resteasy-jackson2-provider', version: '3.6.+'
 
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.2'
-    runtime group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
+    runtime group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
 
     compile group: 'com.google.guava', name: 'guava', version: '28.0-jre'
 
