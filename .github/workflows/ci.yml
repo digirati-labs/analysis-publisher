@@ -6,22 +6,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: analysis-publisher/ci/analyze
-      uses: ./
+    - uses: actions/setup-java@v1
       with:
-        entrypoint: ./gradlew
-        args: check
-    - name: analysis-publisher/ci/publish-coverage
+        java-version: '11'
+    - run: ./gradlew check
+    - name: Publish coverage
       uses: docker://node
-      env:
+      env: #required
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       with:
         entrypoint: npx
         args: codecov
-    - name: analysis-publisher/ci/publish-analysis
-      uses: ./
+    - name: Publish analysis results
+      run: ./gradlew run --args="--report-type=checkstyle --path=**/checkstyle/*.xml --report-type=spotbugs --path=**/spotbugs/*.xml --publisher=github_check"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        args: --report-type=checkstyle --path=**/checkstyle/*.xml --report-type=spotbugs
-          --path=**/spotbugs/*.xml --publisher=github_check
