@@ -1,0 +1,27 @@
+on: push
+name: analysis-publisher/ci
+jobs:
+  build:
+    name: analysis-publisher/ci/analyze
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: analysis-publisher/ci/analyze
+      uses: ./
+      with:
+        entrypoint: ./gradlew
+        args: check
+    - name: analysis-publisher/ci/publish-coverage
+      uses: docker://node
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      with:
+        entrypoint: npx
+        args: codecov
+    - name: analysis-publisher/ci/publish-analysis
+      uses: ./
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        args: --report-type=checkstyle --path=**/checkstyle/*.xml --report-type=spotbugs
+          --path=**/spotbugs/*.xml --publisher=github_check
