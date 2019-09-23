@@ -34,7 +34,7 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
     runtime group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
 
-    compile group: 'com.google.guava', name: 'guava', version: '28.0-jre'
+    compile group: 'com.google.guava', name: 'guava', version: '28.1-jre'
 
     testCompile group: 'com.github.tomakehurst', name: 'wiremock', version: '2.24.1'
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.2'
