@@ -23,7 +23,7 @@ dependencies {
     compile group: 'edu.hm.hafner', name: 'analysis-model', version: '7.0.5'
 
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.10.2'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.2'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.12.0'
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.10.2'
     compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
 
