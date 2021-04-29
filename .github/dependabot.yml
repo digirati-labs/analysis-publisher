@@ -1,0 +1,45 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  reviewers:
+  - garyttierney
+  ignore:
+  - dependency-name: com.github.spotbugs
+    versions:
+    - 4.6.0
+    - 4.6.2
+    - 4.7.0
+  - dependency-name: com.fasterxml.jackson.datatype:jackson-datatype-jsr310
+    versions:
+    - 2.12.1
+    - 2.12.2
+  - dependency-name: com.fasterxml.jackson.core:jackson-core
+    versions:
+    - 2.12.1
+    - 2.12.2
+  - dependency-name: com.fasterxml.jackson.core:jackson-annotations
+    versions:
+    - 2.12.1
+    - 2.12.2
+  - dependency-name: edu.hm.hafner:analysis-model
+    versions:
+    - 9.6.0
+    - 9.7.0
+    - 9.8.0
+    - 9.8.1
+  - dependency-name: org.apache.logging.log4j:log4j-core
+    versions:
+    - 2.14.0
+  - dependency-name: org.apache.logging.log4j:log4j-api
+    versions:
+    - 2.14.0
+  - dependency-name: org.junit.jupiter:junit-jupiter-api
+    versions:
+    - 5.7.0
+  - dependency-name: org.junit.jupiter:junit-jupiter-engine
+    versions:
+    - 5.7.0
